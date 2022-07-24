@@ -1,4 +1,4 @@
-package net.sparkminds.logservice;
+package net.sparkminds.log;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
