@@ -22,14 +22,13 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    @KafkaListener(topicPattern = "log-topic", groupId = "myGroup")
+    @KafkaListener(topicPattern = "my-topic", groupId = "myGroup")
     public void addNewLog(String message) {
         Log log = new Log();
-        String[] messArr = message.split(";");
+        String[] messArr = message.split(",");
         log.setEmail(messArr[0]);
         log.setIp(messArr[1]);
         log.setMessage(messArr[2]);
         logRepository.save(log);
     }
-
 }
