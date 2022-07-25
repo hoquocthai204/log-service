@@ -15,11 +15,11 @@ import net.sparkminds.log.service.LogService;
 @RequestMapping("/api/logs")
 @RequiredArgsConstructor
 public class LogController {
-    
+
     private final LogService logService;
-    
+
     @GetMapping
-    public ResponseEntity<List<Log>> getAllLog(){
+    public ResponseEntity<List<Log>> getAllLog() {
         return ResponseEntity.ok(logService.getAllLog());
     }
 }

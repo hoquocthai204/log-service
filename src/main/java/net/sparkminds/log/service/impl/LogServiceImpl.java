@@ -2,6 +2,7 @@ package net.sparkminds.log.service.impl;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,12 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    @KafkaListener(topicPattern = "my-topic", groupId = "myGroup")
+    @KafkaListener(topicPattern = "${kafka.topic_name}", groupId = "${kafka.group_id}")
     public void addNewLog(String message) {
         Log log = new Log();
-        String[] messArr = message.split(",");
-        log.setEmail(messArr[0]);
-        log.setIp(messArr[1]);
-        log.setMessage(messArr[2]);
+        log.setEmail(message.split(", ")[0].substring(1));
+        log.setIp(message.split(", ")[1]);
+        log.setMessage(message.split(", ")[2].toString().replaceAll("\"", ""));
         logRepository.save(log);
     }
 }

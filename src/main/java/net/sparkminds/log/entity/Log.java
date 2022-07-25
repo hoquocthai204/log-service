@@ -1,6 +1,7 @@
 package net.sparkminds.log.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,13 +11,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "log")
+@Table(name = "t_log")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Log extends AbstractAuditingEntity {
 
     private static final long serialVersionUID = 1L;
